@@ -1,3 +1,10 @@
+## 4.1.9 (2022-02-07)
+
+### Chores
+
+
+bump [@sealsystems](https://github.com/sealsystems)/log from 2.3.3 to 2.4.2 ([acd9438](https://github.com/sealsystems/node-http-server/commit/acd9438))
+
 ## 4.1.8 (2021-05-31)
 
 ### Chores
