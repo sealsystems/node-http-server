@@ -1,3 +1,10 @@
+## 4.1.11 (2022-02-08)
+
+### Chores
+
+
+update deps ([050d7c0](https://github.com/sealsystems/node-http-server/commit/050d7c0))
+
 ## 4.1.10 (2022-02-07)
 
 ### Chores
