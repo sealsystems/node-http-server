@@ -31,7 +31,7 @@
     "@sealsystems/mocha": "4.2.3",
     "express": "4.17.1",
     "freeport": "1.0.5",
-    "nodeenv": "3.0.68",
+    "nodeenv": "3.0.75",
     "proxyquire": "2.1.3"
   },
   "repository": {
