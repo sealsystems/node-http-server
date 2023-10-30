@@ -53,4 +53,11 @@ suite('tlsOptions', () => {
     assert.that(actual.rejectUnauthorized).is.true();
     assert.that(actual.requestCert).is.true();
   });
+
+  test('returns minVersion.', async () => {
+    const minVersion = await tlscert.getTlsMinVersion();
+    const options = await tlsOptions();
+
+    assert.that(options.minVersion).is.equalTo(minVersion);
+  });
 });
