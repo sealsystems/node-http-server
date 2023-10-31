@@ -1,3 +1,10 @@
+## 4.1.13 (2023-10-31)
+
+### Bug Fixes
+
+
+use loopback for local server ([67dca9c](https://github.com/sealsystems/node-http-server/commit/67dca9c))
+
 ## 4.1.12 (2022-08-15)
 
 ### Chores
