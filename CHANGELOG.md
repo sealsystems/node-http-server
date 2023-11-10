@@ -1,3 +1,12 @@
+## 4.2.0 (2023-11-10)
+
+### Features
+
+
+use tls minVersion ([d426b08](https://github.com/sealsystems/node-http-server/commit/d426b08))
+
+Make tls minVersion configurable. https://sealsystems.atlassian.net/browse/PLS-1771
+
 ## 4.1.13 (2023-10-31)
 
 ### Bug Fixes
