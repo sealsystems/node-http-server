@@ -1,3 +1,10 @@
+## 4.3.0 (2023-11-16)
+
+### Features
+
+
+allow https in cloud environment ([31b903f](https://github.com/sealsystems/node-http-server/commit/31b903f))
+
 ## 4.2.0 (2023-11-10)
 
 ### Features
