@@ -1,3 +1,10 @@
+## 4.3.1 (2024-01-09)
+
+### Bug Fixes
+
+
+update tlscert module ([93e8894](https://github.com/sealsystems/node-http-server/commit/93e8894))
+
 ## 4.3.0 (2023-11-16)
 
 ### Features
