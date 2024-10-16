@@ -1,3 +1,10 @@
+## 4.4.0 (2024-10-16)
+
+### Features
+
+
+Make requestTimeout, which was introduced in Node 18 and defaults to 5 minutes, changeable ([7695b00](https://github.com/sealsystems/node-http-server/commit/7695b00))
+
 ## 4.3.1 (2024-01-09)
 
 ### Bug Fixes
