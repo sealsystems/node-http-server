@@ -1,3 +1,10 @@
+## 4.4.1 (2024-10-23)
+
+### Bug Fixes
+
+
+Set old default value as default for requestTimeout ([b8fd2a3](https://github.com/sealsystems/node-http-server/commit/b8fd2a3))
+
 ## 4.4.0 (2024-10-16)
 
 ### Features
