@@ -92,8 +92,10 @@ suite('create', () => {
 
     assert.that(interfaces.local).is.not.null();
     assert.that(interfaces.local.server).is.instanceOf(http.Server);
+    assert.that(interfaces.local.server.requestTimeout).is.equalTo(0);
     assert.that(interfaces.external).is.not.null();
     assert.that(interfaces.external.server).is.instanceOf(http.Server);
+    assert.that(interfaces.external.server.requestTimeout).is.equalTo(0);
 
     await Promise.all([
       new Promise((resolve) => interfaces.local.server.close(resolve)),
@@ -173,5 +175,21 @@ suite('create', () => {
     await new Promise((resolve) => {
       interfaces.local.server.close(resolve);
     });
+  });
+
+  test('set requestTimeout if given', async () => {
+    const restore = nodeenv('TLS_UNPROTECTED', 'world');
+    const app = express();
+    const interfaces = await create({ app, port: 3000, consul: {}, requestTimeout: 5000 });
+
+    assert.that(interfaces.local.server.requestTimeout).is.equalTo(5000);
+    assert.that(interfaces.external.server.requestTimeout).is.equalTo(5000);
+
+    await Promise.all([
+      new Promise((resolve) => interfaces.local.server.close(resolve)),
+      new Promise((resolve) => interfaces.external.server.close(resolve))
+    ]);
+
+    restore();
   });
 });
