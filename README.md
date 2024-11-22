@@ -38,12 +38,14 @@ const options = {
   app: myExpressApp,
   host: '192.168.0.1',
   port: '3000',
-  consul
+  consul,
+  requestTimeout: 100_000,  // optional, default: 0
+  headersTimeout: 100_000   // optional, default: 0
 };
 ```
 
 `host` is the hostname or the IP address of the external interface you want the server to bind to. Regardless of the `host` value it will also bind to `localhost`. Both, local and external connections use the given `port`. If you ommit the property `host`, the address that is advertised by Consul will be used as the external interface. See Consul's docs for more information about its [`advertise_addr` setting](https://www.consul.io/docs/agent/options.html#advertise_addr).
-`consul` is an initialized [`node-consul`](https://github.com/sealsystems/node-consul) object. 
+`consul` is an initialized [`node-consul`](https://github.com/sealsystems/node-consul) object.
 
 Finally, call the `start` function:
 
@@ -68,7 +70,7 @@ console.log('Http server is shut down.');
 
 ## Environment variables
 
-For connections via HTTPS you can define the set of allowed ciphers by setting the environment variable `TLS_CIPHERS`.  
+For connections via HTTPS you can define the set of allowed ciphers by setting the environment variable `TLS_CIPHERS`.
 
 `TLS_UNPROTECTED` controls which connections are encrypted:
 
