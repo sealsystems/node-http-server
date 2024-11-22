@@ -12,7 +12,6 @@ const externalIp = require('./externalIp');
 const start = require('../lib/start');
 
 let errCreate;
-
 const startMock = proxyquire('../lib/start', {
   async './server/create'(options) {
     assert.that(options.consul).is.not.falsy();
@@ -74,6 +73,45 @@ suite('start', () => {
 
     assert.that(interfaces.local).is.not.undefined();
     assert.that(interfaces.external).is.not.undefined();
+
+    await Promise.all([
+      new Promise((resolve) => interfaces.local.server.close(resolve)),
+      new Promise((resolve) => interfaces.external.server.close(resolve))
+    ]);
+  });
+
+  test('set default for request and headers timeout', async () => {
+    const app = express();
+
+    const interfaces = await start({ app, host: externalIp(), port: await freeport(), consul: {} });
+
+    assert.that(interfaces.local.server.requestTimeout).is.equalTo(0);
+    assert.that(interfaces.external.server.requestTimeout).is.equalTo(0);
+    assert.that(interfaces.local.server.headersTimeout).is.equalTo(0);
+    assert.that(interfaces.external.server.headersTimeout).is.equalTo(0);
+
+    await Promise.all([
+      new Promise((resolve) => interfaces.local.server.close(resolve)),
+      new Promise((resolve) => interfaces.external.server.close(resolve))
+    ]);
+  });
+
+  test('set request and headers timeout from options', async () => {
+    const app = express();
+
+    const interfaces = await start({
+      app,
+      host: externalIp(),
+      port: await freeport(),
+      consul: {},
+      requestTimeout: 1000,
+      headersTimeout: 2000
+    });
+
+    assert.that(interfaces.local.server.requestTimeout).is.equalTo(1000);
+    assert.that(interfaces.external.server.requestTimeout).is.equalTo(1000);
+    assert.that(interfaces.local.server.headersTimeout).is.equalTo(2000);
+    assert.that(interfaces.external.server.headersTimeout).is.equalTo(2000);
 
     await Promise.all([
       new Promise((resolve) => interfaces.local.server.close(resolve)),
