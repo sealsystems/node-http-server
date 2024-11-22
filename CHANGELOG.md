@@ -1,3 +1,10 @@
+## 4.4.2 (2024-11-22)
+
+### Bug Fixes
+
+
+Set headersTimeout too ([848b2ce](https://github.com/sealsystems/node-http-server/commit/848b2ce))
+
 ## 4.4.1 (2024-10-23)
 
 ### Bug Fixes
