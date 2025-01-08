@@ -1,3 +1,10 @@
+## 4.4.3 (2025-01-08)
+
+### Bug Fixes
+
+
+updated deps ([5fe49cb](https://github.com/sealsystems/node-http-server/commit/5fe49cb))
+
 ## 4.4.2 (2024-11-22)
 
 ### Bug Fixes
