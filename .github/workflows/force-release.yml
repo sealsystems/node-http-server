@@ -20,6 +20,6 @@ jobs:
           # Commit and push changes
           git add .trigger-release
           git config --local user.email "com.git@sealsystems.de"
-          git config --local user.name "${GITHUB_ACTOR}"
+          git config --local user.name "comgit"
           git commit -m "chore: Trigger release"
           git push
