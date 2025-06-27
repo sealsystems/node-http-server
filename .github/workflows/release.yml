@@ -138,15 +138,15 @@ jobs:
       GIT_COMMITTER_EMAIL: com.git@sealsystems.de
       GIT_COMMITTER_NAME: CI Build
       # Use personal access token for creating releases on GitHub
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_ACTION_SEMVER_TOKEN }}
       # Use personal access token for publishing on GitHub Packages
-      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GH_ACTION_SEMVER_TOKEN }}
 
     steps:
       - uses: actions/checkout@v4
         with:
           # Use personal access token for cloning (and later pushing) code
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_ACTION_SEMVER_TOKEN }}
 
       - name: Use Node.js 22.16.0
         uses: actions/setup-node@v4
@@ -168,7 +168,7 @@ jobs:
         run: npm ci
         env:
           # Use personal access token, must be set for *each step*
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_ACTION_SEMVER_TOKEN }}
 
       - name: "Bugfix release: Set distribution tag accordingly to not remove 'latest' tag from the current version"
         # Only on bugfix branches
