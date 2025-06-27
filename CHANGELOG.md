@@ -1,3 +1,15 @@
+## 4.5.0 (2025-06-27)
+
+### Chores
+
+
+Trigger release ([b610edb](https://github.com/sealsystems/node-http-server/commit/b610edb))
+
+### Features
+
+
+Added tlsCert option ([8c7116b](https://github.com/sealsystems/node-http-server/commit/8c7116b))
+
 ## 4.4.4 (2025-02-03)
 
 ### Bug Fixes
