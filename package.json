@@ -22,14 +22,14 @@
   "main": "lib/httpServer.js",
   "dependencies": {
     "@sealsystems/log": "2.5.1",
+    "@sealsystems/seal-getenv": "2.0.0",
     "@sealsystems/tlscert": "2.6.10",
-    "getenv": "1.0.0",
     "lodash": "4.17.21"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "3.7.10",
     "@sealsystems/mocha": "4.2.3",
-    "express": "4.21.2",
+    "express": "5.1.0",
     "freeport": "1.0.5",
     "nodeenv": "3.0.75",
     "proxyquire": "2.1.3"

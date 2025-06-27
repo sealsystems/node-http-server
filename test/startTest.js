@@ -12,17 +12,21 @@ const externalIp = require('./externalIp');
 const start = require('../lib/start');
 
 let errCreate;
+let lastOptions;
 const startMock = proxyquire('../lib/start', {
   async './server/create'(options) {
+    lastOptions = options;
     assert.that(options.consul).is.not.falsy();
     if (errCreate) {
       throw errCreate;
     }
+    return {};
   }
 });
 
 suite('start', () => {
   setup(async () => {
+    lastOptions = null;
     errCreate = null;
   });
 
@@ -117,6 +121,28 @@ suite('start', () => {
       new Promise((resolve) => interfaces.local.server.close(resolve)),
       new Promise((resolve) => interfaces.external.server.close(resolve))
     ]);
+  });
+
+  test('set TLS certificates from options', async () => {
+    const app = express();
+
+    await startMock({
+      app,
+      host: externalIp(),
+      port: await freeport(),
+      consul: {},
+      tlsCert: {
+        key: 'foo',
+        cert: 'bar',
+        ca: 'baz'
+      }
+    });
+
+    assert.that(lastOptions.tlsCert).is.equalTo({
+      key: 'foo',
+      cert: 'bar',
+      ca: 'baz'
+    });
   });
 
   test("starts only one server if host is set to '127.0.0.1'", async () => {
