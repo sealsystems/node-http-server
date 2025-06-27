@@ -40,7 +40,13 @@ const options = {
   port: '3000',
   consul,
   requestTimeout: 100_000,  // optional, default: 0
-  headersTimeout: 100_000   // optional, default: 0
+  headersTimeout: 100_000,  // optional, default: 0
+  tlsCert:                 // optional, default: see https://github.com/sealsystems/node-tlscert
+    {
+      key: '<The TLS key>', // required if `tlsCert` is set
+      cert: '<The TLS certificate>', // required if `tlsCert` is set
+      ca: '<The TLS CA certificate>' // optional, needed for client authentication
+    }
 };
 ```
 
